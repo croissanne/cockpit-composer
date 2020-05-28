@@ -117,7 +117,7 @@ vm: $(VM_IMAGE)
 
 # run the CDP integration test
 check: $(VM_IMAGE) test/common machine
-	test/verify/run-tests
+	test/common/run-tests --test-dir test/verify
 
 # run test with browser interactively
 debug-check:
@@ -140,7 +140,7 @@ machine: bots
 
 # checkout Cockpit's test API; this has no API stability guarantee, so check out a stable tag
 test/common:
-	git fetch --depth=1 https://github.com/cockpit-project/cockpit.git 216
+	git fetch --depth=1 https://github.com/cockpit-project/cockpit.git 220
 	git checkout --force FETCH_HEAD -- test/common
 	git reset test/common
 
